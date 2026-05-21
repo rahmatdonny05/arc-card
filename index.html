@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arc Cards — Build on Arc by Domith</title>
+  <meta name="description" content="Mint your unique soulbound Arc Card NFT. A community initiative by Domith for Arc ecosystem builders."/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Arc Cards — Build on Arc"/>
+  <meta property="og:description" content="Mint your unique soulbound Arc Card NFT on Arc Testnet."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Arc Cards"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Arc Cards — Build on Arc"/>
+  <meta name="twitter:description" content="Mint your unique soulbound Arc Card NFT on Arc Testnet."/>
+
+  <meta name="theme-color" content="#08090d"/>
+
+  <!-- SVG Favicon (no file needed) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='70' y2='100' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23d4e0f4'/%3E%3Cstop offset='100%25' stop-color='%234a7cdc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='18' fill='%2308090d'/%3E%3Cpath d='M50 8C28 8 13 29 13 54L13 92L27 92L27 58C27 37 37 23 50 23C63 23 73 37 73 58L73 92L87 92L87 54C87 29 72 8 50 8Z' fill='url(%23g)'/%3E%3Cpath d='M33 70L33 92L67 92L67 70C67 61 59 55 50 55C41 55 33 61 33 70Z' fill='url(%23g)' opacity='.55'/%3E%3C/svg%3E"/>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net"/>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="css/style.css" as="style"/>
+  <link rel="preload" href="js/app.js" as="script"/>
+
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" role="navigation" aria-label="Main">
+  <a class="nav-logo" href="#hero" aria-label="Arc Cards home">
+    <svg width="26" height="26" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="logo-g" x1="0" y1="0" x2="70" y2="100" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#d4e0f4"/>
+          <stop offset="100%" stop-color="#4a7cdc"/>
+        </linearGradient>
+      </defs>
+      <path d="M50 8C28 8 13 29 13 54L13 92L27 92L27 58C27 37 37 23 50 23C63 23 73 37 73 58L73 92L87 92L87 54C87 29 72 8 50 8Z" fill="url(#logo-g)"/>
+      <path d="M33 70L33 92L67 92L67 70C67 61 59 55 50 55C41 55 33 61 33 70Z" fill="url(#logo-g)" opacity="0.55"/>
+    </svg>
+    <span class="nav-logo-text"><span class="nav-logo-arc">ARC</span> CARDS</span>
+  </a>
+
+  <div class="nav-links">
+    <a href="#check">Mint</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://testnet.arcscan.app" target="_blank" rel="noopener noreferrer">Explorer ↗</a>
+  </div>
+
+  <button class="wallet-btn" id="walletBtn" type="button" aria-label="Connect your wallet">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+      <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+    </svg>
+    <span id="walletBtnText">Connect Wallet</span>
+  </button>
+</nav>
+
+<div class="gridbg" aria-hidden="true"></div>
+
+<!-- ═══ HERO ═══ -->
+<main>
+<section class="hero" id="hero">
+
+  <div class="wave-badge" aria-label="Community Wave 1">
+    <span class="wave-dot" aria-hidden="true"></span>
+    Community Wave 1 &nbsp;·&nbsp; Build on Arc
+  </div>
+
+  <h1 class="hero-title">Arc<br><span class="gradient-text">Cards</span></h1>
+
+  <p class="hero-sub">
+    A token of appreciation for those who build,<br>
+    explore, and shape the Arc ecosystem.
+  </p>
+
+  <!-- FLOATING NFT CARD -->
+  <div class="card-stage" aria-label="Arc Card preview" role="img">
+    <div class="card-scene" id="cardScene">
+      <div class="orbit orbit-1" aria-hidden="true"></div>
+      <div class="orbit orbit-2" aria-hidden="true"></div>
+      <div class="nft-card" id="nftCard">
+        <div class="scan-line" aria-hidden="true"></div>
+        <div class="corner c-tl" aria-hidden="true"></div>
+        <div class="corner c-tr" aria-hidden="true"></div>
+        <div class="corner c-bl" aria-hidden="true"></div>
+        <div class="corner c-br" aria-hidden="true"></div>
+        <div id="cardArtWrap" class="card-art-wrap"></div>
+        <div class="particles" aria-hidden="true">
+          <span class="p p1"></span><span class="p p2"></span>
+          <span class="p p3"></span><span class="p p4"></span><span class="p p5"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="tagline" aria-hidden="true">// build on arc &middot; forge your on-chain identity</p>
+
+  <!-- WALLET STATUS BAR -->
+  <div class="wallet-status hidden" id="walletStatus" role="status" aria-live="polite">
+    <span class="ws-dot" id="wsDot" aria-hidden="true"></span>
+    <span id="wsText"></span>
+    <a class="ws-link" id="wsExplorer" href="#" target="_blank" rel="noopener noreferrer" aria-label="View address on Arc Explorer">View on Explorer ↗</a>
+  </div>
+
+  <!-- NETWORK WARNING -->
+  <div class="net-warn hidden" id="netWarn" role="alert">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+      <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+    </svg>
+    <span>Wrong network — please switch to Arc Testnet</span>
+    <button class="switch-btn" type="button" onclick="handleWalletClick()">Switch</button>
+  </div>
+
+  <!-- USERNAME INPUT -->
+  <div class="search-area" id="check">
+    <label class="sr-only" for="xInput">Enter your X / Twitter username</label>
+    <div class="search-box" id="searchBox">
+      <div class="search-ico" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </div>
+      <span class="search-at" aria-hidden="true">@</span>
+      <input
+        class="search-input" id="xInput" type="text"
+        placeholder="your X username"
+        maxlength="50" autocomplete="off" autocapitalize="none"
+        autocorrect="off" spellcheck="false"
+        aria-label="X / Twitter username"
+      />
+      <button class="search-btn" id="checkBtn" type="button" disabled aria-label="Check eligibility">
+        Check
+      </button>
+    </div>
+    <p class="search-hint">No login required — just your X username</p>
+
+    <div class="alert alert-err hidden" id="errBox" role="alert" aria-live="assertive">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <span id="errTxt"></span>
+    </div>
+  </div>
+
+  <!-- RESULT PANEL -->
+  <div class="result-card hidden" id="resultPanel" aria-live="polite">
+
+    <!-- Mint success alert -->
+    <div class="alert alert-ok hidden" id="okAlert">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+      Card minted &mdash; token <strong id="mintedToken"></strong>
+      &nbsp;<a id="txLink" href="#" target="_blank" rel="noopener noreferrer" class="tx-link">View tx ↗</a>
+    </div>
+
+    <div class="result-rows">
+      <div class="result-row">
+        <span class="rl">Handle</span>
+        <span class="rv" id="rHandle">—</span>
+      </div>
+      <div class="result-row">
+        <span class="rl">Role</span>
+        <span class="tag tag-blue">Builder</span>
+      </div>
+      <div class="result-row hidden" id="walletInfo">
+        <span class="rl">Wallet</span>
+        <span class="rv mono" id="rWallet">—</span>
+      </div>
+      <div class="result-row">
+        <span class="rl">Mint Cost</span>
+        <span class="rv">Free</span>
+      </div>
+      <div class="result-row">
+        <span class="rl">Network</span>
+        <span class="tag tag-neutral">Arc Testnet</span>
+      </div>
+    </div>
+
+    <div class="result-actions">
+      <button class="action-btn btn-connect" id="connectForMintBtn" type="button">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+        </svg>
+        Connect Wallet to Mint
+      </button>
+      <button class="action-btn btn-mint hidden" id="mintBtn" type="button">
+        Mint My Arc Card
+      </button>
+      <button class="action-btn btn-share hidden" id="shareBtn" type="button">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.213 5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        Share on X
+      </button>
+      <button class="action-btn btn-ghost" id="resetBtn" type="button">
+        ↩ Try another username
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══ PASS MODAL ═══ -->
+<div class="pass-overlay hidden" id="mintedCardModal" role="dialog" aria-modal="true" aria-labelledby="passTitle">
+  <div class="pass-box">
+    <button class="pass-close" id="modalClose" type="button" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="pass-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+      Minted on Arc Testnet
+    </div>
+
+    <h2 class="pass-title" id="passTitle">Your Arc Card</h2>
+
+    <!-- Card image -->
+    <div class="pass-card-stage">
+      <div class="pass-card-wrap" id="mintedSvgWrap"></div>
+    </div>
+
+    <!-- Handle -->
+    <p class="pass-handle" id="modalHandle">@username</p>
+
+    <!-- Stats -->
+    <div class="pass-stats">
+      <div class="pass-stat"><div class="ps-l">Role</div><div class="ps-v">Builder</div></div>
+      <div class="pass-stat"><div class="ps-l">Type</div><div class="ps-v" id="modalType">—</div></div>
+      <div class="pass-stat"><div class="ps-l">Token</div><div class="ps-v" id="modalToken">—</div></div>
+      <div class="pass-stat"><div class="ps-l">Rarity</div><div class="ps-v" id="modalRarity">—</div></div>
+    </div>
+
+    <!-- Tx -->
+    <a class="pass-tx" id="modalTxLink" href="#" target="_blank" rel="noopener noreferrer">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 16 14"/></svg>
+      <span id="modalTxShort">View transaction on Arc Explorer</span>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+
+    <!-- Action buttons -->
+    <div class="pass-actions">
+      <button class="pass-btn pass-dl" id="modalDownloadBtn" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Pass
+      </button>
+      <button class="pass-btn pass-copy" id="modalCopyBtn" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy Pass
+      </button>
+      <button class="pass-btn pass-x" id="modalShareBtn" type="button">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.213 5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Share on X
+      </button>
+    </div>
+
+    <div class="pass-toast" id="passCopyToast" role="status" aria-live="polite"></div>
+
+    <p class="pass-hint">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      Scroll below to upgrade your card
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section" id="faq" aria-labelledby="faqTitle">
+  <div class="faq-inner">
+    <p class="sec-eyebrow">Got Questions</p>
+    <h2 class="sec-title" id="faqTitle">FAQ</h2>
+
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq1">
+          What is Arc Cards?
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq1" hidden>
+          <p>Arc Cards is a community initiative by Domith to celebrate builders in the Arc ecosystem. Each card is a <strong>soulbound NFT</strong> — permanently linked to your wallet, featuring a unique robot anime character generated from your username.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq2">
+          How do I connect my wallet?
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq2" hidden>
+          <p>Click <strong>Connect Wallet</strong> in the top right. Works with MetaMask, Rabby, Coinbase Wallet, and any EVM-compatible wallet. Arc Testnet (Chain ID 5042002) is added to your wallet automatically.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq3">
+          Who is eligible?
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq3" hidden>
+          <p>The community wave is open to Arc ecosystem participants — developers, early testnet users, and active community members on X / Twitter. Enter your username to check eligibility instantly. No account linking required.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq4">
+          What does my card look like?
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq4" hidden>
+          <p>Each Arc Card features a <strong>unique robot anime character</strong> — mech armor, glowing eyes, custom weapons — all deterministically generated from your X username. 8 types, 4 rarities (Common → Legendary). Type your username above to preview yours instantly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq5">
+          Is my card transferable?
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq5" hidden>
+          <p>No. Arc Cards are <strong>soulbound</strong> — once minted to your wallet, they cannot be transferred or sold. This ensures your card is an authentic proof of your presence in the Arc ecosystem.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg width="20" height="20" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <defs><linearGradient id="ft-g" x1="0" y1="0" x2="80" y2="100" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#d4e0f4"/><stop offset="100%" stop-color="#4a7cdc"/>
+        </linearGradient></defs>
+        <path d="M50 6C27 6 12 27 12 52L12 90L27 90L27 56C27 35 37 21 50 21C63 21 73 35 73 56L73 90L88 90L88 52C88 27 73 6 50 6Z" fill="url(#ft-g)"/>
+        <path d="M34 69L34 90L66 90L66 69C66 60 59 54 50 54C41 54 34 60 34 69Z" fill="url(#ft-g)" opacity="0.6"/>
+      </svg>
+      <span>Arc Cards</span>
+    </div>
+    <p class="footer-copy">&copy; 2026 Domith. Build on Arc.</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://testnet.arcscan.app" target="_blank" rel="noopener noreferrer">Explorer</a>
+      <a href="https://docs.arc.io" target="_blank" rel="noopener noreferrer">Docs</a>
+      <a href="https://x.com/domith2025" target="_blank" rel="noopener noreferrer">@domith2025</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- No-wallet toast -->
+<div class="no-wallet-toast hidden" id="noWalletBanner" role="alert">
+  <span>No wallet detected.</span>
+  <a href="https://metamask.io" target="_blank" rel="noopener noreferrer">Install MetaMask</a>
+  <span style="color:var(--text3)">or</span>
+  <a href="https://rabby.io" target="_blank" rel="noopener noreferrer">Rabby</a>
+  <button type="button" onclick="this.parentElement.classList.add('hidden')" aria-label="Dismiss">✕</button>
+</div>
+
+<!-- Screen reader utility -->
+<span class="sr-only" id="liveRegion" aria-live="polite" aria-atomic="true"></span>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"
+  crossorigin="anonymous"
+  onerror="document.body.innerHTML='<div style=\'font-family:monospace;color:#f87171;padding:2rem\'>Failed to load ethers.js — please check your connection and refresh.</div>'">
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
